@@ -26,4 +26,3 @@ package:
     internalPort: 5443
 catalog_sources:
 - rh-operators
-- certified-operators

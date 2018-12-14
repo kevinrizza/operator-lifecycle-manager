@@ -30,4 +30,3 @@ package:
 
 catalog_sources:
  - rh-operators
- - certified-operators
