@@ -235,6 +235,7 @@ type Operator struct {
 	version      *semver.Version
 	bundle       *api.Bundle
 	sourceInfo   *OperatorSourceInfo
+	// TODO: dependencies []Dependency??
 }
 
 var _ OperatorSurface = &Operator{}
