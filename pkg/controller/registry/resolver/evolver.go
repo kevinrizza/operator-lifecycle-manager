@@ -14,19 +14,6 @@ type Evolver interface {
 	Evolve(add map[OperatorSourceInfo]struct{}) error
 }
 
-type NamespaceSatEvolver struct {
-	cache Cache
-	gen   Generation
-}
-
-func (e *NamespaceSatEvolver) Evolve(add map[OperatorSourceInfo]struct{}) error {
-	// get all installed operators for namespace
-
-	// add operator
-
-	return nil
-}
-
 type NamespaceGenerationEvolver struct {
 	querier SourceQuerier
 	gen     Generation

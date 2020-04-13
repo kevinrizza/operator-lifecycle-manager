@@ -225,17 +225,18 @@ type OperatorSurface interface {
 	SourceInfo() *OperatorSourceInfo
 	Bundle() *api.Bundle
 	Inline() bool
+	VersionDependencies() []VersionDependency
 }
 
 type Operator struct {
-	name         string
-	replaces     string
-	providedAPIs APISet
-	requiredAPIs APISet
-	version      *semver.Version
-	bundle       *api.Bundle
-	sourceInfo   *OperatorSourceInfo
-	// TODO: dependencies []Dependency??
+	name                string
+	replaces            string
+	providedAPIs        APISet
+	requiredAPIs        APISet
+	version             *semver.Version
+	bundle              *api.Bundle
+	sourceInfo          *OperatorSourceInfo
+	versionDependencies []VersionDependency // TODO: implement this as a map
 }
 
 var _ OperatorSurface = &Operator{}
@@ -368,4 +369,8 @@ func (o *Operator) Version() *semver.Version {
 
 func (o *Operator) Inline() bool {
 	return o.bundle != nil && o.bundle.GetBundlePath() == ""
+}
+
+func (o *Operator) VersionDependencies() []VersionDependency {
+	return o.versionDependencies
 }

@@ -15,7 +15,6 @@ import (
 	"github.com/operator-framework/operator-lifecycle-manager/pkg/api/apis/operators/v1alpha1"
 	"github.com/operator-framework/operator-lifecycle-manager/pkg/api/client/clientset/versioned"
 	v1alpha1listers "github.com/operator-framework/operator-lifecycle-manager/pkg/api/client/listers/operators/v1alpha1"
-	"github.com/operator-framework/operator-lifecycle-manager/pkg/controller/registry/resolver/sat"
 	"github.com/operator-framework/operator-lifecycle-manager/pkg/lib/operatorlister"
 )
 
@@ -31,6 +30,7 @@ type OperatorsV1alpha1Resolver struct {
 	ipLister          v1alpha1listers.InstallPlanLister
 	client            versioned.Interface
 	kubeclient        kubernetes.Interface
+	satResolver       SatResolver
 	updatedResolution bool
 }
 
@@ -85,12 +85,10 @@ func (r *OperatorsV1alpha1Resolver) ResolveSteps(namespace string, sourceQuerier
 		}
 	} else {
 		// new dependency resolution
-		/*
-			operators, err = r.generateOperatorsV2(csvs, subs, add)
-			if err != nil {
-				return nil, nil, nil, err
-			}
-		*/
+		operators, err = r.satResolver.SolveOperators(csvs, subs, add)
+		if err != nil {
+			return nil, nil, nil, err
+		}
 	}
 
 	// if there's no error, we were able to satsify all constraints in the subscription set, so we calculate what
@@ -168,25 +166,6 @@ func (r *OperatorsV1alpha1Resolver) generateOperators(csvs []*v1alpha1.ClusterSe
 	}
 
 	return gen.Operators(), nil
-}
-
-func (r *OperatorsV1alpha1Resolver) generateOperatorsV2(csvs []*v1alpha1.ClusterServiceVersion, subs []*v1alpha1.Subscription, sourceQuerier SourceQuerier, add map[OperatorSourceInfo]struct{}) (OperatorSet, error) {
-	/*
-		gen, err := NewGenerationFromCluster(csvs, subs)
-		if err != nil {
-			return nil, err
-		}
-	*/
-
-	installableOperators, err := sat.Solve(nil)
-	if err != nil {
-		return nil, err
-	}
-
-	var operators OperatorSet
-	//for installableOperators := range
-
-	return operators, nil
 }
 
 func (r *OperatorsV1alpha1Resolver) sourceInfoForNewSubscriptions(namespace string, subs map[OperatorSourceInfo]*v1alpha1.Subscription) (add map[OperatorSourceInfo]struct{}) {
