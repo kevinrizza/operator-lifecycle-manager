@@ -880,6 +880,8 @@ github.com/openzipkin/zipkin-go v0.2.2/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnh
 github.com/operator-framework/api v0.7.1/go.mod h1:L7IvLd/ckxJEJg/t4oTTlnHKAJIP/p51AvEslW3wYdY=
 github.com/operator-framework/api v0.10.3 h1:C4DE7Rr3+ztUw3mKiFyfAiUJSVOty/cJmpwE90/kYro=
 github.com/operator-framework/api v0.10.3/go.mod h1:tV0BUNvly7szq28ZPBXhjp1Sqg5yHCOeX19ui9K4vjI=
+github.com/operator-framework/gini v1.1.0 h1:w84bE/pi0nlnIRAxzYguoYAnL9s5T6RSVZKYWcxO3yI=
+github.com/operator-framework/gini v1.1.0/go.mod h1:L4GlF3xPPfQUoWglKhaBcR8/LZn3fWtMB1mwUyOGv98=
 github.com/operator-framework/operator-registry v1.17.5 h1:LR8m1rFz5Gcyje8WK6iYt+gIhtzqo52zMRALdmTYHT0=
 github.com/operator-framework/operator-registry v1.17.5/go.mod h1:sRQIgDMZZdUcmHltzyCnM6RUoDF+WS8Arj1BQIARDS8=
 github.com/otiai10/copy v1.2.0 h1:HvG945u96iNadPoG2/Ja2+AUJeW5YuFQMixq9yirC+k=

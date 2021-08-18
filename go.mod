@@ -15,7 +15,7 @@ require (
 	github.com/golang/mock v1.4.1
 	github.com/google/go-cmp v0.5.6
 	github.com/googleapis/gnostic v0.5.5
-	github.com/irifrance/gini v1.0.1
+	github.com/operator-framework/gini v1.1.0
 	github.com/itchyny/gojq v0.11.0
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.2.2
 	github.com/mikefarah/yq/v3 v3.0.0-20201202084205-8846255d1c37
