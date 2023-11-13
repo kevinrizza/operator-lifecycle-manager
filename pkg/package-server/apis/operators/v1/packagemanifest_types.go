@@ -46,6 +46,9 @@ type PackageManifestStatus struct {
 	// PackageName is the name of the overall package, ala `etcd`.
 	PackageName string `json:"packageName"`
 
+	// Deprecation determines if the package is deprecated.
+	Deprecation string `json:"deprecation"`
+
 	// Channels are the declared channels for the package, ala `stable` or `alpha`.
 	// +listType=set
 	Channels []PackageChannel `json:"channels"`
@@ -81,6 +84,9 @@ type PackageChannel struct {
 	// CurrentCSVSpec holds the spec of the current CSV
 	CurrentCSVDesc CSVDescription `json:"currentCSVDesc,omitempty"`
 
+	// Deprecation determins if the channel is deprecated
+	Deprecation string `json:"deprecation,omitempty"`
+
 	// Entries lists all CSVs in the channel, with their upgrade edges.
 	Entries []ChannelEntry `json:"entries"`
 }
@@ -92,6 +98,9 @@ type ChannelEntry struct {
 
 	// Version is the version of the bundle for this entry.
 	Version string `json:"version,omitempty"`
+
+	// Deprecation determines if the channel entry is deprecated.
+	Deprecation string `json:"deprecation,omitempty"`
 }
 
 // CSVDescription defines a description of a CSV

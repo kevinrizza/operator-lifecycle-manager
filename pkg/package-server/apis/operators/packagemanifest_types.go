@@ -46,6 +46,9 @@ type PackageManifestStatus struct {
 	// PackageName is the name of the overall package, ala .
 	PackageName string
 
+	// Deprecation determines if the package is deprecated.
+	Deprecation string
+
 	// Channels are the declared channels for the package, ala .
 	// +listType=set
 	Channels []PackageChannel
@@ -81,6 +84,9 @@ type PackageChannel struct {
 	// CurrentCSVSpec holds the spec of the current CSV
 	CurrentCSVDesc CSVDescription
 
+	// Deprecation determins if the channel is deprecated
+	Deprecation string
+
 	// Entries lists all CSVs in the channel.
 	Entries []ChannelEntry
 }
@@ -92,6 +98,9 @@ type ChannelEntry struct {
 
 	// Version is the version of the bundle for this entry.
 	Version string
+
+	// Deprecation determines if the channel entry is deprecated.
+	Deprecation string
 }
 
 // CSVDescription defines a description of a CSV

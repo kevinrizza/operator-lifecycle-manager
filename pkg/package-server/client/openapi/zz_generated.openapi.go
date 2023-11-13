@@ -1960,6 +1960,13 @@ func schema_package_server_apis_operators_v1_ChannelEntry(ref common.ReferenceCa
 							Format:      "",
 						},
 					},
+					"deprecation": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Deprecation determines if the channel entry is deprecated.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 				},
 				Required: []string{"name"},
 			},
@@ -2045,6 +2052,13 @@ func schema_package_server_apis_operators_v1_PackageChannel(ref common.Reference
 							Description: "CurrentCSVSpec holds the spec of the current CSV",
 							Default:     map[string]interface{}{},
 							Ref:         ref("github.com/operator-framework/operator-lifecycle-manager/pkg/package-server/apis/operators/v1.CSVDescription"),
+						},
+					},
+					"deprecation": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Deprecation determins if the channel is deprecated",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 					"entries": {
@@ -2234,6 +2248,14 @@ func schema_package_server_apis_operators_v1_PackageManifestStatus(ref common.Re
 							Format:      "",
 						},
 					},
+					"deprecation": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Deprecation determines if the package is deprecated.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"channels": {
 						VendorExtensible: spec.VendorExtensible{
 							Extensions: spec.Extensions{
@@ -2262,7 +2284,7 @@ func schema_package_server_apis_operators_v1_PackageManifestStatus(ref common.Re
 						},
 					},
 				},
-				Required: []string{"catalogSource", "catalogSourceDisplayName", "catalogSourcePublisher", "catalogSourceNamespace", "packageName", "channels", "defaultChannel"},
+				Required: []string{"catalogSource", "catalogSourceDisplayName", "catalogSourcePublisher", "catalogSourceNamespace", "packageName", "deprecation", "channels", "defaultChannel"},
 			},
 		},
 		Dependencies: []string{

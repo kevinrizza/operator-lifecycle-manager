@@ -220,6 +220,7 @@ func Convert_operators_CSVDescription_To_v1_CSVDescription(in *operators.CSVDesc
 func autoConvert_v1_ChannelEntry_To_operators_ChannelEntry(in *ChannelEntry, out *operators.ChannelEntry, s conversion.Scope) error {
 	out.Name = in.Name
 	out.Version = in.Version
+	out.Deprecation = in.Deprecation
 	return nil
 }
 
@@ -231,6 +232,7 @@ func Convert_v1_ChannelEntry_To_operators_ChannelEntry(in *ChannelEntry, out *op
 func autoConvert_operators_ChannelEntry_To_v1_ChannelEntry(in *operators.ChannelEntry, out *ChannelEntry, s conversion.Scope) error {
 	out.Name = in.Name
 	out.Version = in.Version
+	out.Deprecation = in.Deprecation
 	return nil
 }
 
@@ -289,6 +291,7 @@ func autoConvert_v1_PackageChannel_To_operators_PackageChannel(in *PackageChanne
 	if err := Convert_v1_CSVDescription_To_operators_CSVDescription(&in.CurrentCSVDesc, &out.CurrentCSVDesc, s); err != nil {
 		return err
 	}
+	out.Deprecation = in.Deprecation
 	out.Entries = *(*[]operators.ChannelEntry)(unsafe.Pointer(&in.Entries))
 	return nil
 }
@@ -304,6 +307,7 @@ func autoConvert_operators_PackageChannel_To_v1_PackageChannel(in *operators.Pac
 	if err := Convert_operators_CSVDescription_To_v1_CSVDescription(&in.CurrentCSVDesc, &out.CurrentCSVDesc, s); err != nil {
 		return err
 	}
+	out.Deprecation = in.Deprecation
 	out.Entries = *(*[]ChannelEntry)(unsafe.Pointer(&in.Entries))
 	return nil
 }
@@ -394,6 +398,7 @@ func autoConvert_v1_PackageManifestStatus_To_operators_PackageManifestStatus(in 
 		return err
 	}
 	out.PackageName = in.PackageName
+	out.Deprecation = in.Deprecation
 	out.Channels = *(*[]operators.PackageChannel)(unsafe.Pointer(&in.Channels))
 	out.DefaultChannel = in.DefaultChannel
 	return nil
@@ -413,6 +418,7 @@ func autoConvert_operators_PackageManifestStatus_To_v1_PackageManifestStatus(in 
 		return err
 	}
 	out.PackageName = in.PackageName
+	out.Deprecation = in.Deprecation
 	out.Channels = *(*[]PackageChannel)(unsafe.Pointer(&in.Channels))
 	out.DefaultChannel = in.DefaultChannel
 	return nil
