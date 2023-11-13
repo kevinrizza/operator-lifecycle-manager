@@ -302,10 +302,18 @@ func (p *RegistryProvider) refreshCache(ctx context.Context, client *registryCli
 		if _, ok := bundles[bundle.PackageName]; !ok {
 			bundles[bundle.PackageName] = map[string][]operators.ChannelEntry{}
 		}
-		bundles[bundle.PackageName][bundle.ChannelName] = append(bundles[bundle.PackageName][bundle.ChannelName], operators.ChannelEntry{
+		channelEntry := operators.ChannelEntry{
 			Name:    bundle.CsvName,
 			Version: bundle.Version,
-		})
+		}
+		// this deprecation is a future deprecation method, unrelated to the deprecated annotation
+		deprecation := bundle.GetDeprecation()
+		if deprecation != nil {
+			if deprecation.Message != "" {
+				channelEntry.Deprecation = deprecation.Message
+			}
+		}
+		bundles[bundle.PackageName][bundle.ChannelName] = append(bundles[bundle.PackageName][bundle.ChannelName], channelEntry)
 	}
 
 	stream, err := client.ListPackages(ctx, &api.ListPackageRequest{})

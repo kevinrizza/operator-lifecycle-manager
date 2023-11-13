@@ -167,6 +167,7 @@ var (
 		{
 			Name:    "prometheusoperator.0.14.0",
 			Version: "0.14.0",
+			//			Deprecation: "This version of this package is deprecated",
 		},
 	}
 )

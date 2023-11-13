@@ -25,7 +25,7 @@ require (
 	github.com/onsi/gomega v1.27.7
 	github.com/openshift/api v3.9.0+incompatible
 	github.com/openshift/client-go v0.0.0-20220525160904-9e1acff93e4a
-	github.com/operator-framework/api v0.18.0
+	github.com/operator-framework/api v0.19.0
 	github.com/operator-framework/operator-registry v1.30.1
 	github.com/otiai10/copy v1.12.0
 	github.com/pkg/errors v0.9.1
@@ -58,7 +58,11 @@ require (
 	sigs.k8s.io/kind v0.20.0
 )
 
-replace google.golang.org/grpc => google.golang.org/grpc v1.40.0
+replace (
+	github.com/operator-framework/api => github.com/operator-framework/api v0.19.1-0.20231110222414-047dce1d23b9
+	github.com/operator-framework/operator-registry => github.com/grokspawn/operator-registry v1.26.6-0.20231109200425-c3cef29c8be2
+	google.golang.org/grpc => google.golang.org/grpc v1.40.0
+)
 
 require (
 	github.com/AdaLogics/go-fuzz-headers v0.0.0-20230106234847-43070de90fa1 // indirect
